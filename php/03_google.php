@@ -2,7 +2,7 @@
 require_once("./src/connect.php");
 
 // Requête SQL pour récupérer tous les utilisateurs dont l'adresse e-mail contient "google" (prénom, nom de famille, adresse e-mail)
-$sql = "";
+$sql = "SELECT last_name,first_name,email FROM users WHERE email like '%google%'";
 
 
 // Préparation de la requête
@@ -24,12 +24,12 @@ require_once("./src/close.php");
 </head>
 <body>
     <?php include_once('./components/nav.php') ?>
-    <pre><?= print_r($result) ?></pre>
+    <!-- <pre><?= print_r($result) ?></pre> -->
     <div>
         <?php
             foreach ($result as $user) {
                 // faire un echo du prénom, nom de famille et adresse e-mail de chaque utilisateur trouvé
-                
+                echo $user['last_name']." ".$user['first_name']." ".$user['email'].'<br>';
             }
         ?>
     </div>
